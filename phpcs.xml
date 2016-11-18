@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="PHP_CodeSniffer">
-	<description>The coding standard for wp-nav-menu-importer.</description>
+	<description>The coding standards for visual-composer-addons.</description>
 
 	<file>./includes/</file>
 
