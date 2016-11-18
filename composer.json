@@ -30,5 +30,9 @@
 		"brianium/paratest"   : "dev-master",
 		"10up/wp_mock"        : "dev-master",
 		"wp-coding-standards/wpcs": "^0.10.0"
+	},
+	"scripts": {
+		"post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs",
+		"post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs"
 	}
 }
