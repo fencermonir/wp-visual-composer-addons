@@ -1,0 +1,27 @@
+{
+	"name": "visual-composer-addons",
+	"description": "A collection of addons for visual composer https://vc.wpbakery.com/",
+	"version": "0.1.0",
+	"type": "wordpress-plugin",
+	"keywords": [],
+	"homepage": "https://github.com/medfreeman/wp-visual-composer-addons",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Mehdi Lahlou",
+			"email": "mehdi.lahlou@free.fr",
+			"homepage": "https://github.com/medfreeman",
+			"role": "Developer"
+		}
+	],
+    "minimum-stability": "dev",
+	"require": {
+		"php": ">=5.6"
+	},
+    "require-dev": {
+	    "antecedent/patchwork": "1.2.*",
+        "phpunit/phpunit"     : "*@stable",
+	    "brianium/paratest"   : "dev-master",
+        "10up/wp_mock"        : "dev-master"
+    }
+}
