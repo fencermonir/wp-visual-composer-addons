@@ -1,4 +1,10 @@
 <?php
+/**
+ * Core addon functions.
+ *
+ * @package visual-composer-addons
+ */
+
 namespace \VisualComposer_addons\Core;
 
 /**
@@ -57,7 +63,7 @@ function init() {
  * @return void
  */
 function activate() {
-	// First load the init scripts in case any rewrite functionality is being loaded
+	// First load the init scripts in case any rewrite functionality is being loaded.
 	init();
 	flush_rewrite_rules();
 }
