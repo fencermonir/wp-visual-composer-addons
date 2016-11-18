@@ -14,14 +14,21 @@
 			"role": "Developer"
 		}
 	],
-    "minimum-stability": "dev",
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org"
+		}
+	],
+	"minimum-stability": "dev",
 	"require": {
 		"php": ">=5.6"
 	},
-    "require-dev": {
-	    "antecedent/patchwork": "1.2.*",
-        "phpunit/phpunit"     : "*@stable",
-	    "brianium/paratest"   : "dev-master",
-        "10up/wp_mock"        : "dev-master"
-    }
+	"require-dev": {
+		"antecedent/patchwork": "1.2.*",
+		"phpunit/phpunit"     : "*@stable",
+		"brianium/paratest"   : "dev-master",
+		"10up/wp_mock"        : "dev-master",
+		"wp-coding-standards/wpcs": "^0.10.0"
+	}
 }
