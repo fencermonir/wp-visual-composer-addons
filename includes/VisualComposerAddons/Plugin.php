@@ -3,7 +3,8 @@
  * Initializes the plugin.
  *
  * @package visual-composer-addons
- * @since 1.0.0
+ * @author  Mehdi Lahlou <mehdi.lahlou@free.fr>
+ * @since   1.0.0
  */
 
 namespace MedFreeman\WP\VisualComposerAddons;

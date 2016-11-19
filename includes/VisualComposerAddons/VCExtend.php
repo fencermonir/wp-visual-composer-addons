@@ -3,6 +3,8 @@
  * Visual composer extension class.
  *
  * @package visual-composer-addons
+ * @author  Mehdi Lahlou <mehdi.lahlou@free.fr>
+ * @since   1.0.0
  */
 
 namespace MedFreeman\WP\VisualComposerAddons;
