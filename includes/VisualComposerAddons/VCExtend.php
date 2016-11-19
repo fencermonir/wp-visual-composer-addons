@@ -11,10 +11,6 @@ namespace MedFreeman\WP\VisualComposerAddons;
 
 /**
  * Visual composer extension class
- *
- * @package    visual-composer-addons
- * @author     Mehdi Lahlou <mehdi.lahlou@free.fr>
- * @since      Class available since Release 1.0.0
  */
 class VCExtend {
 	/**
