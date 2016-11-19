@@ -33,7 +33,7 @@
 	},
 	"autoload": {
         "psr-4": {
-            "MedFreeman\\WP\\VisualComposerAddons\\": "includes/"
+            "MedFreeman\\WP\\": "includes/"
         }
     },
 	"scripts": {
