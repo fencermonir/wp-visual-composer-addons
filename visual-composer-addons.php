@@ -35,6 +35,8 @@
  * https://github.com/10up/generator-wp-make
  */
 
+namespace MedFreeman\WP\VisualComposerAddons;
+
 // Useful global constants
 define( 'VCADDONS_VERSION', '0.1.0' );
 define( 'VCADDONS_URL',     plugin_dir_url( __FILE__ ) );
@@ -42,12 +44,53 @@ define( 'VCADDONS_PATH',    dirname( __FILE__ ) . '/' );
 define( 'VCADDONS_INC',     VCADDONS_PATH . 'includes/' );
 
 // Include files
-require_once VCADDONS_INC . 'functions/core.php';
+$autoload_path = __DIR__ . '/vendor/autoload.php';
 
+if ( file_exists( $autoload_path ) ) {
+    require_once( $autoload_path );
+}
+
+/**
+ * Initializes the plugin.
+ *
+ * @return void
+ */
+function initialize() {
+	$plugin = new Plugin();
+	/**
+	 * Allow other plugins to hook in and extend the plugin class
+	 *
+	 * @param Plugin $plugin
+	 */
+	do_action( 'vcaddons_loaded', $plugin );
+}
+add_action( 'after_setup_theme', 'MedFreeman\WP\VisualComposerAddons\initialize', 20 );
+
+/**
+ * Activate the plugin
+ *
+ * @uses init()
+ * @uses flush_rewrite_rules()
+ *
+ * @return void
+ */
+function activate() {
+	// First load the init scripts in case any rewrite functionality is being loaded.
+	initialize();
+	flush_rewrite_rules();
+}
+
+/**
+ * Deactivate the plugin
+ *
+ * Uninstall routines should be in uninstall.php
+ *
+ * @return void
+ */
+function deactivate() {
+
+}
 
 // Activation/Deactivation
-register_activation_hook( __FILE__, '\\VisualComposer_addons\Core\activate' );
-register_deactivation_hook( __FILE__, '\\VisualComposer_addons\Core\deactivate' );
-
-// Bootstrap
-\VisualComposer_addons\Core\setup();
+register_activation_hook( __FILE__, '\\MedFreeman\WP\VisualComposerAddons\activate' );
+register_deactivation_hook( __FILE__, '\\MedFreeman\WP\VisualComposerAddons\deactivate' );
