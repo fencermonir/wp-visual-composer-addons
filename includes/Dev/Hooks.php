@@ -50,6 +50,23 @@ trait Hooks {
 	}
 
 	/**
+	 * Add a WordPress shortcode
+	 *
+	 * @param string   $hook     Wordpress shortcode name.
+	 * @param callable $method   PHP method for the shortcode to call.
+	 */
+	protected function add_shortcode( $hook, $method ) {
+		$priority = 1;
+		$arg_count = 2;
+		add_shortcode(
+			$hook,
+			$this->map_filter( $this->get_wp_filter_id( $hook, $method, $priority ), $method, $arg_count ),
+			$priority,
+			$arg_count
+		);
+	}
+
+	/**
 	 * Remove a WordPress filter
 	 *
 	 * @param string   $hook     Wordpress hook name.
@@ -78,6 +95,15 @@ trait Hooks {
 	 */
 	protected function remove_action( $hook, $method, $priority = 10, $arg_count = 1 ) {
 		$this->remove_filter( $hook, $method, $priority, $arg_count );
+	}
+
+	/**
+	 * Remove a WordPress shortcode
+	 *
+	 * @param string $hook Wordpress hook name.
+	 */
+	protected function remove_shortcode( $hook ) {
+		remove_shortcode( $hook );
 	}
 
 	/**
