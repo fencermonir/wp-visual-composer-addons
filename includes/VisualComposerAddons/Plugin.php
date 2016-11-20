@@ -9,7 +9,7 @@
 
 namespace MedFreeman\WP\VisualComposerAddons;
 
-use MedFreeman\WP\VisualComposerAddons\VCExtend;
+use MedFreeman\WP\VisualComposerAddons\VCElementManager;
 
 /**
  * Plugin initialization class
@@ -20,12 +20,12 @@ use MedFreeman\WP\VisualComposerAddons\VCExtend;
  */
 class Plugin {
 	/**
-	 * The instance of the plugin module.
+	 * The instance of the vc element manager.
 	 *
 	 * @access public
-	 * @var \MedFreeman\WP\VisualComposerAddons\VCExtend
+	 * @var \MedFreeman\WP\VisualComposerAddons\VCElementManager
 	 */
-	public $vc_extend;
+	public $vc_element_manager;
 	/**
 	 * Setup the plugin's main functionality.
 	 */
@@ -33,7 +33,7 @@ class Plugin {
 		add_action( 'init', array( $this, 'i18n' ) );
 		add_action( 'init', array( $this, 'init' ) );
 
-		$this->vc_extend = new VCExtend();
+		$this->vc_element_manager = new VCElementManager();
 	}
 	/**
 	 * Initializes the plugin and fires an action other plugins can hook into.
@@ -50,7 +50,7 @@ class Plugin {
 			return;
 		}
 
-		$this->vc_extend->setup();
+		$this->vc_element_manager->init();
 
 		do_action( 'vcaddons_init' );
 	}
