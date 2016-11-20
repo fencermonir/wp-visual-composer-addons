@@ -29,7 +29,10 @@
 		"phpunit/phpunit"     : "*@stable",
 		"brianium/paratest"   : "dev-master",
 		"10up/wp_mock"        : "dev-master",
-		"wp-coding-standards/wpcs": "^0.10.0"
+		"squizlabs/php_codesniffer": "*",
+		"wp-coding-standards/wpcs": "*",
+		"frenck/php-compatibility": "*",
+		"dealerdirect/phpcodesniffer-composer-installer": "*"
 	},
 	"autoload": {
         "psr-4": {
@@ -37,7 +40,8 @@
         }
     },
 	"scripts": {
-		"post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs",
-		"post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs"
+		"post-install-cmd": "@phpcs_standards",
+		"post-update-cmd" : "@phpcs_standards",
+		"phpcs_standards" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs,vendor/frenck/php-compatibility"
 	}
 }

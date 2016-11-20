@@ -6,6 +6,11 @@
 
 	<arg name="warning-severity" value="0"/>
 
+	<!-- Run against the PHPCompatibility ruleset -->
+    <rule ref="PHPCompatibility">
+    	<config name="testVersion" value="5.6-7.0"/>
+    </rule>
+
 	<rule ref="WordPress"/>
 	<rule ref="Wordpress-Extra">
 		<!-- This project doesnt use wordpress.com functions -->
