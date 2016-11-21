@@ -1,0 +1,14 @@
+/**
+ * Visual Composer addons
+ * SVG background styles
+ * https://github.com/medfreeman/wp-visual-composer-addons
+ *
+ * Copyright (c) 2016 Mehdi Lahlou
+ * Licensed under the GPL-2.0+ license.
+ */
+.svg-background svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
