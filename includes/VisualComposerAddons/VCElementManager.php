@@ -35,7 +35,7 @@ class VCElementManager {
 	 * @return void
 	 */
 	function __construct() {
-		$elements_instances = array();
+		$this->elements_instances = array();
 
 		$finder = new Finder();
 		$finder->files()->in( self::ELEMENTS_PATH );
