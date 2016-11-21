@@ -20,6 +20,13 @@ use MedFreeman\WP\VisualComposerAddons\VCElementManager;
  */
 class Plugin {
 	/**
+	 * The instance of the vc field manager.
+	 *
+	 * @access public
+	 * @var \MedFreeman\WP\VisualComposerAddons\VCFieldManager
+	 */
+	private $vc_field_manager;
+	/**
 	 * The instance of the vc element manager.
 	 *
 	 * @access public
@@ -34,6 +41,7 @@ class Plugin {
 		add_action( 'init', array( $this, 'i18n' ) );
 		add_action( 'init', array( $this, 'init' ) );
 
+		$this->vc_field_manager = new VCFieldManager();
 		$this->vc_element_manager = new VCElementManager();
 	}
 
@@ -52,6 +60,7 @@ class Plugin {
 			return;
 		}
 
+		$this->vc_field_manager->init();
 		$this->vc_element_manager->init();
 
 		do_action( 'vcaddons_init' );
