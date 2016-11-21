@@ -15,8 +15,6 @@ use Symfony\Component\Finder\Finder;
 
 /**
  * Visual composer fields manager class.
- *
- * @package    visual-composer-addons
  */
 class VCFieldManager {
 	const FIELDS_PATH = __DIR__ . '/Fields/';

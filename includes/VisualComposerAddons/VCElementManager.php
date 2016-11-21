@@ -15,8 +15,6 @@ use Symfony\Component\Finder\Finder;
 
 /**
  * Visual composer element manager class.
- *
- * @package    visual-composer-addons
  */
 class VCElementManager {
 	const ELEMENTS_PATH = __DIR__ . '/Elements/';
