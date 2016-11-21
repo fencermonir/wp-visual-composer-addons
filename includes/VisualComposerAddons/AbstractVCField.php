@@ -1,6 +1,6 @@
 <?php
 /**
- * Visual composer abstract element class.
+ * Visual composer abstract field class.
  *
  * @package visual-composer-addons
  * @author  Mehdi Lahlou <mehdi.lahlou@free.fr>
@@ -12,7 +12,7 @@ namespace MedFreeman\WP\VisualComposerAddons;
 use MedFreeman\WP\Dev\Hooks;
 
 /**
- * Visual composer element abstract class.
+ * Visual composer field abstract class.
  *
  * @package    visual-composer-addons
  */
@@ -34,7 +34,7 @@ abstract class AbstractVCField {
 
 	/**
 	 * The function that is bound to vc_before_init hook.
-	 * Allows declaring the new element to visual composer.
+	 * Allows declaring the new field to visual composer.
 	 *
 	 * @return void
 	 */
