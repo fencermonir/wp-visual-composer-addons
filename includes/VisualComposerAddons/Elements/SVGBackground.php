@@ -17,6 +17,15 @@ use MedFreeman\WP\VisualComposerAddons\AbstractVCElement;
 class SVGBackground extends AbstractVCElement {
 
 	/**
+	 * Set element base name.
+	 *
+	 * @return string
+	 */
+	function get_base() {
+		return '';
+	}
+
+	/**
 	 * Register visual composer element.
 	 *
 	 * @return void

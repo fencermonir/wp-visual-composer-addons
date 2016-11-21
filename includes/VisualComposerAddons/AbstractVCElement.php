@@ -43,11 +43,21 @@ abstract class AbstractVCElement {
 	 */
 	public function init() {
 		// Use this when creating a shortcode addon.
-		$this->add_shortcode( 'bartag', 'shortcode' );
+		if ( ! empty( $this->get_base() ) ) {
+			$this->add_shortcode( $this->get_base(), 'shortcode' );
+		}
 
 		// Register CSS and JS.
 		$this->add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 	}
+
+	/**
+	 * The function that returns the base name of the element.
+	 * If not empty, a shortcode will be registered with a name equal to this string.
+	 *
+	 * @return string | empty
+	 */
+	abstract protected function get_base();
 
 	/**
 	 * The function that is bound to vc_before_init hook.
