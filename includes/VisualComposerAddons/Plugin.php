@@ -60,7 +60,6 @@ class Plugin {
 			return;
 		}
 
-		$this->vc_field_manager->init();
 		$this->vc_element_manager->init();
 
 		do_action( 'vcaddons_init' );

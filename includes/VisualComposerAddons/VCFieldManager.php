@@ -46,15 +46,4 @@ class VCFieldManager {
 			$this->fields_instances[] = new $class_name();
 		}
 	}
-
-	/**
-	 * Initializes visual composer fields instances.
-	 *
-	 * @return void
-	 */
-	function init() {
-		foreach ( $this->fields_instances as $instance ) {
-			$instance->init();
-		}
-	}
 }
