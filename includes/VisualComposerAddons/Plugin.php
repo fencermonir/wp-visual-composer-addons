@@ -25,7 +25,8 @@ class Plugin {
 	 * @access public
 	 * @var \MedFreeman\WP\VisualComposerAddons\VCElementManager
 	 */
-	public $vc_element_manager;
+	private $vc_element_manager;
+
 	/**
 	 * Setup the plugin's main functionality.
 	 */
@@ -35,6 +36,7 @@ class Plugin {
 
 		$this->vc_element_manager = new VCElementManager();
 	}
+
 	/**
 	 * Initializes the plugin and fires an action other plugins can hook into.
 	 *
