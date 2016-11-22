@@ -21,6 +21,13 @@ abstract class AbstractVCElement {
 	use Hooks;
 
 	/**
+	 * Element counter to generate unique css classes.
+	 *
+	 * @var int $counter element counter.
+	 */
+	protected $counter;
+
+	/**
 	 * Register visual composer element.
 	 *
 	 * @uses   add_action
@@ -28,6 +35,7 @@ abstract class AbstractVCElement {
 	 * @return void
 	 */
 	public function __construct() {
+		$counter = 0;
 		// We safely integrate with VC with this hook.
 		$this->add_action( 'vc_before_init', 'vc_integration' );
 	}
