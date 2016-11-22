@@ -62,6 +62,23 @@ class SVGBackground extends AbstractVCElement {
 								'value'   => array( 'true' ),
 							 ),
 		) );
+
+		$breakpoint = get_option( 'wpb_js_responsive_max', 768 );
+
+		/* Small screen SVG URL */
+		vc_add_param( $shortcode, array(
+			'type'        => 'media',
+			'heading'     => 'Small screen SVG URL',
+			'param_name'  => 'svg_bg_id_iphone',
+			'mime'        => 'image/svg+xml',
+			'value'       => '',
+			'description' => 'Select or upload SVG file for screens under ' . $breakpoint . 'px.',
+			'group'       => $group,
+			'dependency'  => array(
+								'element' => 'svg_bg',
+								'value'   => array( 'true' ),
+							 ),
+		) );
 	}
 
 	/**

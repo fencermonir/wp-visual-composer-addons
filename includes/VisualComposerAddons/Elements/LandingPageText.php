@@ -31,6 +31,8 @@ class LandingPageText extends AbstractVCElement {
 	 * @return void
 	 */
 	function vc_integration() {
+		$breakpoint = get_option( 'wpb_js_responsive_max', 768 );
+
 		/* Intro */
 		vc_map( array(
 			'name'        => __( 'Landing page text', 'vcaddons' ),
@@ -74,7 +76,29 @@ class LandingPageText extends AbstractVCElement {
 					'value' => '',
 					'description' => '',
 				),
-			)
+				array(
+					'type' => 'number',
+					'holder' => 'div',
+					'class' => '',
+					'heading' => __( 'Vertical offset', 'vcaddons' ),
+					'param_name' => 'offset',
+					'value' => 0,
+					'min'   => 0,
+					'max'   => 100,
+					'description' => 'in vw units.',
+				),
+				array(
+					'type' => 'number',
+					'holder' => 'div',
+					'class' => '',
+					'heading' => __( 'Small screen Vertical offset', 'vcaddons' ),
+					'param_name' => 'offset_iphone',
+					'value' => 0,
+					'min'   => 0,
+					'max'   => 100,
+					'description' => 'in vw units for screens under ' . $breakpoint . 'px.',
+				),
+			),
 		) );
 	}
 
@@ -84,22 +108,39 @@ class LandingPageText extends AbstractVCElement {
 	 * @param array           $attrs shortcode attributes.
 	 * @param (string | null) $content shortcode contents.
 	 *
-	 * @return void
+	 * @return shortcode output
 	 */
 	function shortcode( $attrs, $content = null ) {
-		extract( shortcode_atts( array(
+		$this->counter += 1;
+		$attrs = shortcode_atts( array(
 			'title' => '',
 			'title2' => '',
 			'subtitle' => '',
-		), $attrs ) );
-		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content
+			'offset' => 0,
+			'offset_iphone' => 0,
+		), $attrs );
+		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content.
 
-		$output  = "<div class=\"wpb__landing\">";
-		$output .= '' !== $title ? "<h1 class=\"wpb__landing__title\">{$title}</h1>" : '';
-		$output .= '' !== $title2 ? "<h1 class=\"wpb__landing__title\">{$title2}</h1>" : '';
-		$output .= '' !== $subtitle ? "<h2 class=\"wpb__landing__subtitle\">{$subtitle}</h2>" : '';
+		$breakpoint = get_option( 'wpb_js_responsive_max', 768 );
+
+		$output = "
+		<style scoped>
+			.wpb__landing--{$this->counter} {
+				margin-top: {$attrs['offset_iphone']}vw;
+			}
+
+			@media only screen and (min-width: {$breakpoint}px) {
+				.wpb__landing--{$this->counter} {
+					margin-top: {$attrs['offset']}vw;
+				}
+			}
+		</style>";
+		$output .= "<div class=\"wpb__landing wpb__landing--{$this->counter}\">";
+		$output .= '' !== $attrs['title'] ? "<h1 class=\"wpb__landing__title\">{$attrs['title']}</h1>" : '';
+		$output .= '' !== $attrs['title2'] ? "<h1 class=\"wpb__landing__title\">{$attrs['title2']}</h1>" : '';
+		$output .= '' !== $attrs['subtitle'] ? "<h2 class=\"wpb__landing__subtitle\">{$attrs['subtitle']}</h2>" : '';
 		$output .= '' !== $content ? "<div class=\"wpb__landing__text\">{$content}</div>" : '';
-		$output .= "</div>";
+		$output .= '</div>';
 		return $output;
 	}
 

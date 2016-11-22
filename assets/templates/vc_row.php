@@ -153,13 +153,16 @@ $wrapper_attributes[] = 'class="' . esc_attr( trim( $css_class ) ) . '"';
 $output .= '<div ' . implode( ' ', $wrapper_attributes ) . '>';
 $output .= wpb_js_remove_wpautop( $content );
 if ( ! $parallax && $has_svg_bg ) {
+	$breakpoint = get_option( 'wpb_js_responsive_max', 768 );
+
 	$output .= '<div class="svg-background">';
 	//ob_start();
 	//include( get_attached_file( $svg_bg_id ) );
 	//$output .= ob_get_clean();
 
 	$output .= '<picture>';
-	$output .= '<source srcset="' . wp_get_attachment_url( $svg_bg_id ) . '" type="image/svg+xml">';
+	$output .= '<source srcset="' . wp_get_attachment_url( $svg_bg_id ) . '" type="image/svg+xml" type="image/svg+xml" media="(min-width: ' . $breakpoint . 'px)">';
+	$output .= absint( $svg_bg_id_iphone ) ? '<source srcset="' . wp_get_attachment_url( $svg_bg_id_iphone ) . '">' : '';
 	$output .= '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP">';
 	$output .= '</picture>';
 
