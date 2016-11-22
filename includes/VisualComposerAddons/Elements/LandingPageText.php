@@ -70,7 +70,7 @@ class LandingPageText extends AbstractVCElement {
 					'holder' => 'div',
 					'class' => '',
 					'heading' => __( 'Text', 'vcaddons' ),
-					'param_name' => 'text',
+					'param_name' => 'content',
 					'value' => '',
 					'description' => '',
 				),
@@ -91,13 +91,14 @@ class LandingPageText extends AbstractVCElement {
 			'title' => '',
 			'title2' => '',
 			'subtitle' => '',
-			'text' => '',
 		), $attrs ) );
 		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content
 
-		$output = "<div class=\"wpb__landing\"><h1 class=\"wpb__landing__title\">{$title}</h1>";
+		$output  = "<div class=\"wpb__landing\">";
+		$output .= '' !== $title ? "<h1 class=\"wpb__landing__title\">{$title}</h1>" : '';
 		$output .= '' !== $title2 ? "<h1 class=\"wpb__landing__title\">{$title2}</h1>" : '';
-		$output .= "<h2 class=\"wpb__landing__subtitle\">{$subtitle}</h2><div class=\"wpb__landing__text\">{$text}</div>";
+		$output .= '' !== $subtitle ? "<h2 class=\"wpb__landing__subtitle\">{$subtitle}</h2>" : '';
+		$output .= '' !== $content ? "<div class=\"wpb__landing__text\">{$content}</div>" : '';
 		$output .= "</div>";
 		return $output;
 	}
@@ -108,5 +109,7 @@ class LandingPageText extends AbstractVCElement {
 	 * @return void
 	 */
 	function enqueue_scripts() {
+		wp_register_style( 'vc_landing_page_text', VCADDONS_URL . '/assets/css/Elements/LandingPageText.css' );
+		wp_enqueue_style( 'vc_landing_page_text' );
 	}
 }

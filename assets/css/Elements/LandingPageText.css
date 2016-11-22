@@ -1,12 +1,11 @@
 /**
  * Visual Composer addons
- * SVG background styles
+ * Landing Page text styles
  * https://github.com/medfreeman/wp-visual-composer-addons
  *
  * Copyright (c) 2016 Mehdi Lahlou
  * Licensed under the GPL-2.0+ license.
  */
-.svg-background img {
-	vertical-align: top;
-    margin-top: -1px;
+.wpb__landing {
+	position: absolute;
 }
