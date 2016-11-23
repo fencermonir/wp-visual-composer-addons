@@ -163,7 +163,7 @@ if ( ! $parallax && $has_svg_bg ) {
 	$output .= '<picture>';
 	$output .= '<source srcset="' . wp_get_attachment_url( $svg_bg_id ) . '" type="image/svg+xml" type="image/svg+xml" media="(min-width: ' . $breakpoint . 'px)">';
 	$output .= absint( $svg_bg_id_iphone ) ? '<source srcset="' . wp_get_attachment_url( $svg_bg_id_iphone ) . '">' : '';
-	$output .= '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP">';
+	$output .= '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">';
 	$output .= '</picture>';
 
 	$output .= '</div>';
