@@ -136,8 +136,12 @@ class LandingPageText extends AbstractVCElement {
 			}
 		</style>";
 		$output .= "<div class=\"wpb__landing wpb__landing--{$this->counter}\">";
-		$output .= '' !== $attrs['title'] ? "<h1 class=\"wpb__landing__title\">{$attrs['title']}</h1>" : '';
-		$output .= '' !== $attrs['title2'] ? "<h1 class=\"wpb__landing__title\">{$attrs['title2']}</h1>" : '';
+		if ( $attrs['title'] || $attrs['title2'] ) {
+			$output .= "<div class=\"wpb__landing__title__section\">";
+			$output .= '' !== $attrs['title'] ? "<h1 class=\"wpb__landing__title\">{$attrs['title']}</h1>" : '';
+			$output .= '' !== $attrs['title2'] ? "<h1 class=\"wpb__landing__title\">{$attrs['title2']}</h1>" : '';
+			$output .= '</div>';
+		}
 		$output .= '' !== $attrs['subtitle'] ? "<h2 class=\"wpb__landing__subtitle\">{$attrs['subtitle']}</h2>" : '';
 		$output .= '' !== $content ? "<div class=\"wpb__landing__text\">{$content}</div>" : '';
 		$output .= '</div>';
