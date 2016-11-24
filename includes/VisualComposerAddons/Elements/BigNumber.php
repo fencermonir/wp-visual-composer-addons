@@ -77,7 +77,7 @@ class BigNumber extends AbstractVCElement {
 		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content.
 		$color = '' !== $attrs['number_color'] ? " style=\"color: {$attrs['number_color']}\"" : '';
 
-		$output = "<div class=\"wpb__big_number\"{$color}>{$attrs['number']}</div>";
+		$output = "<div class=\"wpb__big__number\"{$color}>{$attrs['number']}</div>";
 		return $output;
 	}
 
