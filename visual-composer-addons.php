@@ -37,6 +37,10 @@
 
 namespace MedFreeman\WP\VisualComposerAddons;
 
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	return;
+}
+
 // Useful global constants
 define( 'VCADDONS_VERSION', '0.1.0' );
 define( 'VCADDONS_URL',     plugin_dir_url( __FILE__ ) );
