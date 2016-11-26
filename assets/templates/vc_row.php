@@ -149,25 +149,49 @@ if ( ! $parallax && $has_video_bg ) {
 
 $css_class = preg_replace( '/\s+/', ' ', apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, implode( ' ', array_filter( array_unique( $css_classes ) ) ), $this->settings['base'], $atts ) );
 
-$wrapper_attributes[] = 'class="' . esc_attr( trim( $css_class ) ) . '"';
-
-$output .= '<div ' . implode( ' ', $wrapper_attributes ) . '>';
 if ( ! $parallax && $has_svg_bg ) {
 	$breakpoint = get_option( 'wpb_js_responsive_max', 768 );
 
+	$row_svg_background_class = 'row-svg-background--' . mt_rand();
+	$row_svg_output = '<style scoped>';
+	if ( is_numeric( $svg_bg_ratio_iphone ) ) {
+		$row_svg_height_iphone = 100 / $svg_bg_ratio_iphone;
+		$row_svg_output .= "
+				.{$row_svg_background_class} {
+					height: {$row_svg_height_iphone}vw;
+				}";
+	}
+	if ( is_numeric( $svg_bg_ratio ) ) {
+		$row_svg_height = 100 / $svg_bg_ratio;
+		$row_svg_output .= "
+				@media only screen and (min-width: {$breakpoint}px) {
+					.{$row_svg_background_class} {
+						height: {$row_svg_height}vw;
+					}
+				}";
+	}
+	$row_svg_output .= '</style>';
+	$css_class .= ' ' . $row_svg_background_class;
+}
+
+$wrapper_attributes[] = 'class="' . esc_attr( trim( $css_class ) ) . '"';
+
+$output .= '<div ' . implode( ' ', $wrapper_attributes ) . '>';
+
+if ( ! $parallax && $has_svg_bg ) {
+
+	$output .= $row_svg_output;
 	$output .= '<div class="svg-background">';
-	//ob_start();
-	//include( get_attached_file( $svg_bg_id ) );
-	//$output .= ob_get_clean();
 
 	$output .= '<picture>';
 	$output .= '<source srcset="' . wp_get_attachment_url( $svg_bg_id ) . '" type="image/svg+xml" type="image/svg+xml" media="(min-width: ' . $breakpoint . 'px)">';
-	$output .= absint( $svg_bg_id_iphone ) ? '<source srcset="' . wp_get_attachment_url( $svg_bg_id_iphone ) . '">' : '';
+	$output .= absint( $svg_bg_id_iphone ) ? '<source srcset="' . wp_get_attachment_url( $svg_bg_id_iphone ) . '"  type="image/svg+xml">' : '';
 	$output .= '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">';
 	$output .= '</picture>';
 
 	$output .= '</div>';
 }
+
 $output .= wpb_js_remove_wpautop( $content );
 $output .= '</div>';
 $output .= $after_output;

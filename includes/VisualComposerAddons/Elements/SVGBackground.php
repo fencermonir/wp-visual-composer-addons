@@ -63,6 +63,20 @@ class SVGBackground extends AbstractVCElement {
 							 ),
 		) );
 
+		/* SVG Ratio */
+		vc_add_param( $shortcode, array(
+			'type'        => 'number',
+			'heading'     => 'SVG ratio',
+			'param_name'  => 'svg_bg_ratio',
+			'value'       => '',
+			'description' => 'Ratio of svg file (width / height).',
+			'group'       => $group,
+			'dependency'  => array(
+								'element' => 'svg_bg',
+								'value'   => array( 'true' ),
+							 ),
+		) );
+
 		$breakpoint = get_option( 'wpb_js_responsive_max', 768 );
 
 		/* Small screen SVG URL */
@@ -73,6 +87,19 @@ class SVGBackground extends AbstractVCElement {
 			'mime'        => 'image/svg+xml',
 			'value'       => '',
 			'description' => 'Select or upload SVG file for screens under ' . $breakpoint . 'px.',
+			'group'       => $group,
+			'dependency'  => array(
+								'element' => 'svg_bg',
+								'value'   => array( 'true' ),
+							 ),
+		) );
+
+		vc_add_param( $shortcode, array(
+			'type'        => 'number',
+			'heading'     => 'SVG ratio',
+			'param_name'  => 'svg_bg_ratio_iphone',
+			'value'       => '',
+			'description' => 'Ratio of small svg file (width / height).',
 			'group'       => $group,
 			'dependency'  => array(
 								'element' => 'svg_bg',
