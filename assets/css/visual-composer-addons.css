@@ -5,3 +5,9 @@
  * Copyright (c) 2016 Mehdi Lahlou
  * Licensed under the GPL-2.0+ license.
  */
+.wpb__align--bottom-center {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
