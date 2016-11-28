@@ -61,7 +61,6 @@ class Plugin {
 			return;
 		}
 
-		vc_set_shortcodes_templates_dir( VCADDONS_PATH . 'assets/templates' );
 		$this->vc_element_manager->init();
 
 		do_action( 'vcaddons_init' );
