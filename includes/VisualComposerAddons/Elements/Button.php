@@ -69,6 +69,15 @@ class Button extends AbstractVCElement {
 					),
 					'description' => '',
 				),
+				array(
+					'type' => 'textfield',
+					'holder' => 'div',
+					'class' => '',
+					'heading' => __( 'CSS class', 'vcaddons' ),
+					'param_name' => 'el_class',
+					'value' => '',
+					'description' => '',
+				),
 			),
 		) );
 	}
@@ -86,10 +95,12 @@ class Button extends AbstractVCElement {
 			'title' => '',
 			'link'  => '#',
 			'style' => 'btn-white-on-marine',
+			'el_class' => '',
 		), $attrs );
 		$href = vc_build_link( $attrs['link'] );
+		$attrs['el_class'] = ( '' !== $attrs['el_class'] ) ? ' ' . $attrs['el_class'] : '';
 
-		$output = "<a href=\"{$href['url']}\" class=\"btn {$attrs['style']}\" role=\"button\">{$attrs['title']}</a>";
+		$output = "<a href=\"{$href['url']}\" class=\"btn {$attrs['style']}{$attrs['el_class']}\" role=\"button\">{$attrs['title']}</a>";
 		return $output;
 	}
 
