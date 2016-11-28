@@ -89,7 +89,7 @@ class Button extends AbstractVCElement {
 		), $attrs );
 		$href = vc_build_link( $attrs['link'] );
 
-		$output = "<a href=\"{$attrs['link']}\" class=\"btn {$attrs['style']}\" role=\"button\">{$attrs['title']}</a>";
+		$output = "<a href=\"{$href['url']}\" class=\"btn {$attrs['style']}\" role=\"button\">{$attrs['title']}</a>";
 		return $output;
 	}
 
