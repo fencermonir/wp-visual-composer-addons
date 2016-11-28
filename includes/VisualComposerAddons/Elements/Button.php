@@ -70,6 +70,34 @@ class Button extends AbstractVCElement {
 					'description' => '',
 				),
 				array(
+					'type' => 'dropdown',
+					'holder' => 'div',
+					'class' => '',
+					'heading' => __( 'Size', 'vcaddons' ),
+					'param_name' => 'size',
+					'value' => array(
+						'Medium' => 'md',
+						'Large' => 'lg',
+						'Small' => 'sm',
+						'Xsmall' => 'xs',
+					),
+					'description' => '',
+				),
+				array(
+					'type' => 'dropdown',
+					'holder' => 'div',
+					'class' => '',
+					'heading' => __( 'Alignment', 'vcaddons' ),
+					'param_name' => 'alignment',
+					'value' => array(
+						'Inline' => '',
+						'Left' => 'left',
+						'Right' => 'right',
+						'Center' => 'center',
+					),
+					'description' => '',
+				),
+				array(
 					'type' => 'textfield',
 					'holder' => 'div',
 					'class' => '',
@@ -95,12 +123,21 @@ class Button extends AbstractVCElement {
 			'title' => '',
 			'link'  => '#',
 			'style' => 'btn-white-on-marine',
+			'size'  => 'md',
+			'alignment' => '',
 			'el_class' => '',
 		), $attrs );
 		$href = vc_build_link( $attrs['link'] );
+		$title = ( '' !== $href['title'] ) ? ' title="' . $href['title'] . '"' : ''; 
+		$target = ( '' !== $href['target'] ) ? ' target="' . $href['target'] . '"' : ''; 
+		$rel = ( '' !== $href['rel'] ) ? ' rel="' . $href['rel'] . '"' : ''; 
+		$attrs['size'] = ' btn-' . $attrs['size'];
+		$attrs['alignment'] = ( '' !== $attrs['alignment'] ) ? ' wpb__align--' . $attrs['alignment'] : '';
 		$attrs['el_class'] = ( '' !== $attrs['el_class'] ) ? ' ' . $attrs['el_class'] : '';
 
-		$output = "<a href=\"{$href['url']}\" class=\"btn {$attrs['style']}{$attrs['el_class']}\" role=\"button\">{$attrs['title']}</a>";
+		$output = "<div class=\"{$attrs['alignment']}\">";
+		$output .= "<a href=\"{$href['url']}\" class=\"btn {$attrs['style']}{$attrs['alignment']}{$attrs['size']}{$attrs['el_class']}\" {$title}{$target}{$rel}role=\"button\">{$attrs['title']}</a>";
+		$output .= "</div>";
 		return $output;
 	}
 
