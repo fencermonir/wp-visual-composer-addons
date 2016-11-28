@@ -16,3 +16,12 @@
 .wpb__align--right {
 	text-align: right;
 }
+
+.wpb__align--bottom-center {
+	text-align: center;
+	margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
