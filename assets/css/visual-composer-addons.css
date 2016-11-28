@@ -16,10 +16,3 @@
 .wpb__align--right {
 	text-align: right;
 }
-
-.wpb__align--bottom-center {
-	position: absolute;
-    bottom: 0;
-    left: 50px;
-    right: 50px;
-}
