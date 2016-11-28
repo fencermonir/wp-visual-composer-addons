@@ -133,7 +133,7 @@ class Button extends AbstractVCElement {
 		$target = ( '' !== $href['target'] ) ? ' target="' . $href['target'] . '"' : ''; 
 		$rel = ( '' !== $href['rel'] ) ? ' rel="' . $href['rel'] . '"' : ''; 
 		$attrs['size'] = ' btn-' . $attrs['size'];
-		$attrs['alignment'] = ( '' !== $attrs['alignment'] ) ? ' wpb__align--' . $attrs['alignment'] : '';
+		$attrs['alignment'] = ( '' !== $attrs['alignment'] ) ? 'wpb__align--' . $attrs['alignment'] : '';
 		$attrs['el_class'] = ( '' !== $attrs['el_class'] ) ? ' ' . $attrs['el_class'] : '';
 
 		$output = "<div class=\"{$attrs['alignment']}\">";
