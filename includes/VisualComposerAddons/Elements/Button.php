@@ -35,8 +35,8 @@ class Button extends AbstractVCElement {
 		vc_map( array(
 			'name'        => __( 'Button', 'vcaddons' ),
 			'base'        => $this->get_base(),
-			'description' => __( '1plusX button', 'vcaddons' ),
-			'category'    => __( 'Content', 'js_composer' ),
+			'description' => __( 'Customizable button with styles', 'vcaddons' ),
+			'category'    => '1plusX',
 			'params'      => array(
 				array(
 					'type' => 'textfield',

@@ -35,8 +35,8 @@ class PageTitle extends AbstractVCElement {
 		vc_map( array(
 			'name'        => __( 'Page title', 'vcaddons' ),
 			'base'        => $this->get_base(),
-			'description' => __( '1plusX page title', 'vcaddons' ),
-			'category'    => __( 'Content', 'js_composer' ),
+			'description' => __( 'Automatically placed page title', 'vcaddons' ),
+			'category'    => '1plusX',
 			'params'      => array(
 				array(
 					'type' => 'textfield',

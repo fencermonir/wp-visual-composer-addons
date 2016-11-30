@@ -33,11 +33,12 @@ class SVGPicture extends AbstractVCElement {
 	function vc_integration() {
 		/* Intro */
 		vc_map( array(
-			'name'        => __( 'SVG picture', 'vcaddons' ),
-			'base'        => $this->get_base(),
-			'description' => __( 'Responsive SVG picture', 'vcaddons' ),
-			'category'    => __( 'Content', 'js_composer' ),
-			'params'      => array(
+			'name'          => __( 'SVG picture', 'vcaddons' ),
+			'base'          => $this->get_base(),
+			'description'   => __( 'Vector picture', 'vcaddons' ),
+			'category'    => '1plusX',
+			'custom_markup' => '',
+			'params'        => array(
 				array(
 					'type'        => 'media',
 					'heading'     => 'SVG URL',
@@ -48,6 +49,15 @@ class SVGPicture extends AbstractVCElement {
 				),
 			),
 		) );
+	}
+
+	/**
+	 * Changes element appearance in admin.
+	 *
+	 * @return element html output
+	 */
+	function vc_custom_markup( $value, $settings, $tag ) {
+
 	}
 
 	/**

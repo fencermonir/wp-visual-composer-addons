@@ -33,11 +33,12 @@ class BigNumber extends AbstractVCElement {
 	function vc_integration() {
 		/* Intro */
 		vc_map( array(
-			'name'        => __( 'Big number', 'vcaddons' ),
-			'base'        => $this->get_base(),
-			'description' => __( '1plusX big number', 'vcaddons' ),
-			'category'    => __( 'Content', 'js_composer' ),
-			'params'      => array(
+			'name'          => __( 'Big number', 'vcaddons' ),
+			'base'          => $this->get_base(),
+			'description'   => __( 'Number - as in working @ 1plusX', 'vcaddons' ),
+			'category'      => '1plusX',
+			'custom_markup' => '',
+			'params'        => array(
 				array(
 					'type' => 'number',
 					'holder' => 'div',
@@ -56,6 +57,12 @@ class BigNumber extends AbstractVCElement {
 					'value' => '#006699',
 					'description' => '',
 				),
+				array(
+                    'param_name' => 'hidden_markup1', // all params must have a unique name
+                    'type' => 'custom_markup', // this param type
+                    'description' => __( 'Enter your content..', 'js_composer' ), // some description if needed
+                    'value' => '<div style="background:red;width:100%;height:40px">aaa</div>', // your custom markup
+  				),
 			),
 		) );
 	}

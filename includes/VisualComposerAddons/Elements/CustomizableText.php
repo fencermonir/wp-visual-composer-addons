@@ -37,7 +37,7 @@ class CustomizableText extends AbstractVCElement {
 			'name'        => __( 'Customizable text', 'vcaddons' ),
 			'base'        => $this->get_base(),
 			'description' => __( 'Text with size, weight and color', 'vcaddons' ),
-			'category'    => __( 'Content', 'js_composer' ),
+			'category'    => '1plusX',
 			'params'      => array(
 				array(
 					'type' => 'textarea_html',

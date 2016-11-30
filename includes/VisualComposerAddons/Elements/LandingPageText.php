@@ -37,8 +37,8 @@ class LandingPageText extends AbstractVCElement {
 		vc_map( array(
 			'name'        => __( 'Landing page text', 'vcaddons' ),
 			'base'        => $this->get_base(),
-			'description' => __( 'Landing page text with controllable placement, and options for small screens', 'vcaddons' ),
-			'category'    => __( 'Content', 'js_composer' ),
+			'description' => __( 'Landing page text with proportional placement', 'vcaddons' ),
+			'category'    => '1plusX',
 			'params'      => array(
 				array(
 					'type' => 'textfield',
