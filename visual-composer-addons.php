@@ -3,7 +3,7 @@
  * Plugin Name: Visual Composer addons
  * Plugin URI:  https://github.com/medfreeman/wp-visual-composer-addons
  * Description: A collection of addons for visual composer https://vc.wpbakery.com/
- * Version:     0.1.0
+ * Version:     1.0.0
  * Author:      Mehdi Lahlou
  * Author URI:  https://github.com/medfreeman
  * Text Domain: vcaddons
