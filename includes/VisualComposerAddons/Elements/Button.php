@@ -148,5 +148,7 @@ class Button extends AbstractVCElement {
 	 * @return void
 	 */
 	function enqueue_scripts() {
+		wp_register_style( 'vc_bootstrap_button', VCADDONS_URL . '/assets/css/Elements/Button.css' );
+		wp_enqueue_style( 'vc_bootstrap_button' );
 	}
 }
