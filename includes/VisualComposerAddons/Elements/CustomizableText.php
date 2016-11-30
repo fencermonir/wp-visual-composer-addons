@@ -102,7 +102,7 @@ class CustomizableText extends AbstractVCElement {
 
 		$output = "<div class=\"wpb__customizable__text\" style=\"font-size:{$attrs['size']}px;font-weight:{$attrs['weight']};color:{$attrs['color']};\">";
 		$output .= $content;
-		$output .= "</div>";
+		$output .= '</div>';
 		return $output;
 	}
 

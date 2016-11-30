@@ -63,7 +63,7 @@ class SVGPicture extends AbstractVCElement {
 			'svg_id'       => 0,
 		), $attrs );
 		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content.
-		
+
 		$output = '';
 		$output .= '<picture>';
 		$output .= absint( $attrs['svg_id'] ) ? '<source srcset="' . wp_get_attachment_url( $attrs['svg_id'] ) . '">' : '';

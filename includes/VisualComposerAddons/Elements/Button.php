@@ -129,16 +129,16 @@ class Button extends AbstractVCElement {
 			'el_class' => '',
 		), $attrs );
 		$href = vc_build_link( $attrs['link'] );
-		$title = ( '' !== $href['title'] ) ? ' title="' . $href['title'] . '"' : ''; 
-		$target = ( '' !== $href['target'] ) ? ' target="' . $href['target'] . '"' : ''; 
-		$rel = ( '' !== $href['rel'] ) ? ' rel="' . $href['rel'] . '"' : ''; 
+		$title = ( '' !== $href['title'] ) ? ' title="' . $href['title'] . '"' : '';
+		$target = ( '' !== $href['target'] ) ? ' target="' . $href['target'] . '"' : '';
+		$rel = ( '' !== $href['rel'] ) ? ' rel="' . $href['rel'] . '"' : '';
 		$attrs['size'] = ' btn-' . $attrs['size'];
 		$attrs['alignment'] = ( '' !== $attrs['alignment'] ) ? 'wpb__align--' . $attrs['alignment'] : '';
 		$attrs['el_class'] = ( '' !== $attrs['el_class'] ) ? ' ' . $attrs['el_class'] : '';
 
 		$output = "<div class=\"{$attrs['alignment']}\">";
 		$output .= "<a href=\"{$href['url']}\" class=\"btn {$attrs['style']}{$attrs['size']}{$attrs['el_class']}\" {$title}{$target}{$rel}role=\"button\">{$attrs['title']}</a>";
-		$output .= "</div>";
+		$output .= '</div>';
 		return $output;
 	}
 

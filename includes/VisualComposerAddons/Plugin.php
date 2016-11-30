@@ -75,7 +75,7 @@ class Plugin {
 	public function styles() {
 		$theme_dir = get_stylesheet_directory_uri();
 
-		wp_enqueue_style( 'vcaddons', VCADDONS_URL . "/assets/css/visual-composer-addons.css", array(), null, 'all' );
+		wp_enqueue_style( 'vcaddons', VCADDONS_URL . '/assets/css/visual-composer-addons.css', array(), null, 'all' );
 	}
 
 	/**
