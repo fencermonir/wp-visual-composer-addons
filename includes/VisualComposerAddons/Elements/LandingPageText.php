@@ -91,6 +91,17 @@ class LandingPageText extends AbstractVCElement {
 					'type' => 'number',
 					'holder' => 'div',
 					'class' => '',
+					'heading' => __( 'Medium Screen Vertical offset', 'vcaddons' ),
+					'param_name' => 'offset_medium',
+					'value' => 0,
+					'min'   => 0,
+					'max'   => 100,
+					'description' => 'in vw units.',
+				),
+				array(
+					'type' => 'number',
+					'holder' => 'div',
+					'class' => '',
 					'heading' => __( 'Small screen Vertical offset', 'vcaddons' ),
 					'param_name' => 'offset_iphone',
 					'value' => 0,
@@ -127,6 +138,12 @@ class LandingPageText extends AbstractVCElement {
 		<style scoped>
 			.wpb__landing--{$this->counter} {
 				margin-top: {$attrs['offset_iphone']}vw;
+			}
+
+			@media only screen and (min-width: 600px) {
+				.wpb__landing--{$this->counter} {
+					margin-top: {$attrs['offset']}vw;
+				}
 			}
 
 			@media only screen and (min-width: {$breakpoint}px) {
