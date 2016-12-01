@@ -128,6 +128,7 @@ class LandingPageText extends AbstractVCElement {
 			'title2' => '',
 			'subtitle' => '',
 			'offset' => 0,
+			'offset_medium' => 0,
 			'offset_iphone' => 0,
 		), $attrs );
 		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content.
@@ -142,7 +143,7 @@ class LandingPageText extends AbstractVCElement {
 
 			@media only screen and (min-width: 600px) {
 				.wpb__landing--{$this->counter} {
-					margin-top: {$attrs['offset']}vw;
+					margin-top: {$attrs['offset_medium']}vw;
 				}
 			}
 
