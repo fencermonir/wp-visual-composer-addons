@@ -96,7 +96,7 @@ class LandingPageText extends AbstractVCElement {
 					'value' => 0,
 					'min'   => 0,
 					'max'   => 100,
-					'description' => 'in vw units.',
+					'description' => 'in vw units for screens under ' . $breakpoint . 'px.',
 				),
 				array(
 					'type' => 'number',
@@ -107,7 +107,18 @@ class LandingPageText extends AbstractVCElement {
 					'value' => 0,
 					'min'   => 0,
 					'max'   => 100,
-					'description' => 'in vw units for screens under ' . $breakpoint . 'px.',
+					'description' => 'in vw units for screens under 500px.',
+				),
+				array(
+					'type' => 'number',
+					'holder' => 'div',
+					'class' => '',
+					'heading' => __( 'Extra small screen Vertical offset', 'vcaddons' ),
+					'param_name' => 'offset_xs',
+					'value' => 0,
+					'min'   => 0,
+					'max'   => 100,
+					'description' => 'in vw units for screens under 450px.',
 				),
 			),
 		) );
@@ -130,6 +141,7 @@ class LandingPageText extends AbstractVCElement {
 			'offset' => 0,
 			'offset_medium' => 0,
 			'offset_iphone' => 0,
+			'offset_xs' => 0,
 		), $attrs );
 		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content.
 
@@ -138,10 +150,16 @@ class LandingPageText extends AbstractVCElement {
 		$output = "
 		<style scoped>
 			.wpb__landing--{$this->counter} {
-				margin-top: {$attrs['offset_iphone']}vw;
+				margin-top: {$attrs['offset_xs']}vw;
 			}
 
-			@media only screen and (min-width: 600px) {
+			@media only screen and (min-width: 450px) {
+				.wpb__landing--{$this->counter} {
+					margin-top: {$attrs['offset_iphone']}vw;
+				}
+			}
+
+			@media only screen and (min-width: 500px) {
 				.wpb__landing--{$this->counter} {
 					margin-top: {$attrs['offset_medium']}vw;
 				}
