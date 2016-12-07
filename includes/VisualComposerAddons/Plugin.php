@@ -40,7 +40,7 @@ class Plugin {
 	public function __construct() {
 		add_action( 'init', array( $this, 'i18n' ) );
 		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
+		// add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
 
 		$this->vc_field_manager = new VCFieldManager();
 		$this->vc_element_manager = new VCElementManager();
