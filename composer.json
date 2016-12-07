@@ -1,5 +1,5 @@
 {
-	"name": "medfreeman/visual-composer-addons",
+	"name": "medfreeman/wp-visual-composer-addons",
 	"description": "A collection of addons for visual composer https://vc.wpbakery.com/",
 	"version": "1.1.2",
 	"type": "wordpress-plugin",
