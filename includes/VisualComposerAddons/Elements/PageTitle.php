@@ -77,7 +77,7 @@ class PageTitle extends AbstractVCElement {
 		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content.
 		$color = '' !== $attrs['title_color'] ? " style=\"color: {$attrs['title_color']}\"" : '';
 
-		$output = "<h1 class=\"wpb__page__title\"{$color}>{$attrs['title']}</h1>";
+		$output = "<h2 class=\"wpb__page__title\"{$color}>{$attrs['title']}</h2>";
 		return $output;
 	}
 
