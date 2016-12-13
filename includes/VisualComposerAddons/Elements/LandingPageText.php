@@ -148,7 +148,7 @@ class LandingPageText extends AbstractVCElement {
 		$breakpoint = get_option( 'wpb_js_responsive_max', 768 );
 
 		$output = "
-		<style scoped>
+		<style type=\"text/css\">
 			.wpb__landing--{$this->counter} {
 				margin-top: {$attrs['offset_xs']}vw;
 			}
