@@ -137,7 +137,7 @@ class Button extends AbstractVCElement {
 		$attrs['el_class'] = ( '' !== $attrs['el_class'] ) ? ' ' . $attrs['el_class'] : '';
 
 		$output = "<div class=\"{$attrs['alignment']}\">";
-		$output .= "<a href=\"{$href['url']}\" class=\"btn {$attrs['style']}{$attrs['size']}{$attrs['el_class']}\" {$title}{$target}{$rel}role=\"button\">{$attrs['title']}</a>";
+		$output .= "<a href=\"{$href['url']}\" class=\"btn {$attrs['style']}{$attrs['size']}{$attrs['el_class']}\" {$title}{$target}{$rel} role=\"button\">{$attrs['title']}</a>";
 		$output .= '</div>';
 		return $output;
 	}
