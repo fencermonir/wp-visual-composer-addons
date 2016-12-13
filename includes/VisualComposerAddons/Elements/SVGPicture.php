@@ -77,7 +77,7 @@ class SVGPicture extends AbstractVCElement {
 		$output = '';
 		$output .= '<picture>';
 		$output .= absint( $attrs['svg_id'] ) ? '<source srcset="' . wp_get_attachment_url( $attrs['svg_id'] ) . '">' : '';
-		$output .= '<img class="wpb__svg__picture" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">';
+		$output .= '<img class="wpb__svg__picture" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="transparent gif">';
 		$output .= '</picture>';
 
 		return $output;
