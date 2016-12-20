@@ -76,50 +76,6 @@ class LandingPageText extends AbstractVCElement {
 					'value' => '',
 					'description' => '',
 				),
-				array(
-					'type' => 'number',
-					'holder' => 'div',
-					'class' => '',
-					'heading' => __( 'Vertical offset', 'vcaddons' ),
-					'param_name' => 'offset',
-					'value' => 0,
-					'min'   => 0,
-					'max'   => 100,
-					'description' => 'in vw units.',
-				),
-				array(
-					'type' => 'number',
-					'holder' => 'div',
-					'class' => '',
-					'heading' => __( 'Medium Screen Vertical offset', 'vcaddons' ),
-					'param_name' => 'offset_medium',
-					'value' => 0,
-					'min'   => 0,
-					'max'   => 100,
-					'description' => 'in vw units for screens under ' . $breakpoint . 'px.',
-				),
-				array(
-					'type' => 'number',
-					'holder' => 'div',
-					'class' => '',
-					'heading' => __( 'Small screen Vertical offset', 'vcaddons' ),
-					'param_name' => 'offset_iphone',
-					'value' => 0,
-					'min'   => 0,
-					'max'   => 100,
-					'description' => 'in vw units for screens under 500px.',
-				),
-				array(
-					'type' => 'number',
-					'holder' => 'div',
-					'class' => '',
-					'heading' => __( 'Extra small screen Vertical offset', 'vcaddons' ),
-					'param_name' => 'offset_xs',
-					'value' => 0,
-					'min'   => 0,
-					'max'   => 100,
-					'description' => 'in vw units for screens under 450px.',
-				),
 			),
 		) );
 	}
@@ -145,33 +101,7 @@ class LandingPageText extends AbstractVCElement {
 		), $attrs );
 		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content.
 
-		$breakpoint = get_option( 'wpb_js_responsive_max', 768 );
-
-		$output = "
-		<style type=\"text/css\">
-			.wpb__landing--{$this->counter} {
-				margin-top: {$attrs['offset_xs']}vw;
-			}
-
-			@media only screen and (min-width: 450px) {
-				.wpb__landing--{$this->counter} {
-					margin-top: {$attrs['offset_iphone']}vw;
-				}
-			}
-
-			@media only screen and (min-width: 500px) {
-				.wpb__landing--{$this->counter} {
-					margin-top: {$attrs['offset_medium']}vw;
-				}
-			}
-
-			@media only screen and (min-width: {$breakpoint}px) {
-				.wpb__landing--{$this->counter} {
-					margin-top: {$attrs['offset']}vw;
-				}
-			}
-		</style>";
-		$output .= "<article class=\"wpb__landing wpb__landing--{$this->counter}\">";
+		$output = "<article class=\"wpb__landing wpb__landing--{$this->counter}\">";
 		if ( $attrs['title'] || $attrs['title2'] ) {
 			$output .= '<header>';
 			$output .= '<div class="wpb__landing__title__section">';
