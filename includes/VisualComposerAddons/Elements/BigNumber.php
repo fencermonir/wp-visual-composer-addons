@@ -57,12 +57,6 @@ class BigNumber extends AbstractVCElement {
 					'value' => '#006699',
 					'description' => '',
 				),
-				array(
-                    'param_name' => 'hidden_markup1', // all params must have a unique name
-                    'type' => 'custom_markup', // this param type
-                    'description' => __( 'Enter your content..', 'js_composer' ), // some description if needed
-                    'value' => '<div style="background:red;width:100%;height:40px">aaa</div>', // your custom markup
-  				),
 			),
 		) );
 	}

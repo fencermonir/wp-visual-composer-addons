@@ -52,15 +52,6 @@ class SVGPicture extends AbstractVCElement {
 	}
 
 	/**
-	 * Changes element appearance in admin.
-	 *
-	 * @return element html output
-	 */
-	function vc_custom_markup( $value, $settings, $tag ) {
-
-	}
-
-	/**
 	 * Register visual composer element shortcode.
 	 *
 	 * @param array           $attrs shortcode attributes.
