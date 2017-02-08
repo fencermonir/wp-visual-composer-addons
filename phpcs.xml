@@ -15,8 +15,6 @@
 
 	<rule ref="WordPress"/>
 	<rule ref="Wordpress-Extra">
-		<!-- This project doesnt use wordpress.com functions -->
-		<exclude name="WordPress.VIP.RestrictedFunctions.term_exists" />
 		<!-- This project doesnt use lowercase filenames -->
 		<exclude name="Generic.Files.LowercasedFilename.NotFound" />
 	</rule>
