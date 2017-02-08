@@ -10,6 +10,7 @@
 namespace MedFreeman\WP\VisualComposerAddons;
 
 use MedFreeman\WP\VisualComposerAddons\VCElementManager;
+use MedFreeman\WP\VisualComposerAddons\VCFieldManager;
 
 /**
  * Plugin initialization class
@@ -40,8 +41,9 @@ class Plugin {
 	public function __construct() {
 		add_action( 'init', array( $this, 'i18n' ) );
 		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'vc_before_init', array( $this, 'vc_init' ) );
 
-		/* add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) ); */
+		add_action( 'admin_enqueue_scripts', array( $this, 'styles' ) );
 
 		$this->vc_field_manager = new VCFieldManager();
 		$this->vc_element_manager = new VCElementManager();
@@ -62,9 +64,17 @@ class Plugin {
 			return;
 		}
 
-		$this->vc_element_manager->init();
-
 		do_action( 'vcaddons_init' );
+	}
+
+	/**
+	 * Initializes vc_element_manager.
+	 *
+	 * @author Mehdi Lahlou
+	 * @return void
+	 */
+	public function vc_init() {
+		$this->vc_element_manager->init();
 	}
 
 	/**
@@ -74,8 +84,6 @@ class Plugin {
 	 * @since 1.0
 	 */
 	public function styles() {
-		$theme_dir = get_stylesheet_directory_uri();
-
 		wp_enqueue_style( 'vcaddons', VCADDONS_URL . '/assets/css/visual-composer-addons.css', array(), null, 'all' );
 	}
 

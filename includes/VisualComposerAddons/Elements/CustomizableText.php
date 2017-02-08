@@ -9,35 +9,42 @@
 
 namespace MedFreeman\WP\VisualComposerAddons\Elements;
 
-use MedFreeman\WP\VisualComposerAddons\AbstractVCElement;
+use MedFreeman\WP\VisualComposerAddons\VCElement;
 
 /**
  * Visual composer landing page text element class.
  */
-class CustomizableText extends AbstractVCElement {
+class CustomizableText extends \WPBakeryShortCodeFishBones {
+
+	use VCElement;
 
 	/**
-	 * Set element base name.
+	 * Element constructor.
 	 *
-	 * @return string
+	 * @param array $settings Visual composer vc_map settings.
+	 *
+	 * @return void
 	 */
-	function get_base() {
-		return 'customizable_text';
+	public function __construct( $settings ) {
+		parent::__construct( $settings ); // Important to call parent constructor to active all logic for shortcode.
 	}
 
 	/**
 	 * Register visual composer element.
 	 *
-	 * @return void
+	 * @return array $settings Visual composer vc_map settings.
 	 */
-	function vc_integration() {
+	public static function vc_settings() {
 
 		/* Intro */
-		vc_map( array(
+		return array(
 			'name'        => __( 'Customizable text', 'vcaddons' ),
-			'base'        => $this->get_base(),
+			'base'        => 'customizable_text',
 			'description' => __( 'Text with size, weight and color', 'vcaddons' ),
-			'category'    => '1plusX',
+			'category'    => 'Addons',
+			'admin_enqueue_js'  => VCADDONS_URL . 'assets/js/src/Elements/CustomizableText.js',
+			'icon'              => 'icon-wpb__customizable_text',
+			'js_view'           => 'VcCustomizableTextView',
 			'params'      => array(
 				array(
 					'type' => 'textarea_html',
@@ -81,36 +88,28 @@ class CustomizableText extends AbstractVCElement {
 					'description' => '',
 				),
 			),
-		) );
+		);
 	}
 
 	/**
 	 * Register visual composer element shortcode.
 	 *
-	 * @param array           $attrs shortcode attributes.
+	 * @param array           $atts shortcode attributes.
 	 * @param (string | null) $content shortcode contents.
 	 *
 	 * @return shortcode output
 	 */
-	function shortcode( $attrs, $content = null ) {
-		$attrs = shortcode_atts( array(
+	function content( $atts, $content = null ) {
+		$atts = shortcode_atts( array(
 			'size' => '16',
 			'weight' => 'normal',
 			'color' => '#006699',
-		), $attrs );
+		), $atts );
 		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content.
 
-		$output = "<div class=\"wpb__customizable__text\" style=\"font-size:{$attrs['size']}px;font-weight:{$attrs['weight']};color:{$attrs['color']};\">";
+		$output = "<div class=\"wpb__customizable__text\" style=\"font-size:{$atts['size']}px;font-weight:{$atts['weight']};color:{$atts['color']};\">";
 		$output .= $content;
 		$output .= '</div>';
 		return $output;
-	}
-
-	/**
-	 * Register visual composer element style.
-	 *
-	 * @return void
-	 */
-	function enqueue_scripts() {
 	}
 }

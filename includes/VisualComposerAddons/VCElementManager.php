@@ -9,7 +9,7 @@
 
 namespace MedFreeman\WP\VisualComposerAddons;
 
-use MedFreeman\WP\VisualComposerAddons\Elements;
+use MedFreeman\WP\Dev\Hooks;
 
 use Symfony\Component\Finder\Finder;
 
@@ -17,15 +17,18 @@ use Symfony\Component\Finder\Finder;
  * Visual composer element manager class.
  */
 class VCElementManager {
+
+	use Hooks;
+
 	const ELEMENTS_PATH = __DIR__ . '/Elements/';
 
 	/**
-	 * Store visual composer elements instances.
+	 * Store visual composer elements class names.
 	 *
 	 * @access private
-	 * @var array \MedFreeman\WP\VisualComposerAddons\AbstractVCElement
+	 * @var array classes names.
 	 */
-	private $elements_instances;
+	private $elements_classes;
 
 	/**
 	 * Register visual composer elements instances.
@@ -33,7 +36,7 @@ class VCElementManager {
 	 * @return void
 	 */
 	function __construct() {
-		$this->elements_instances = array();
+		$this->elements_classes = array();
 
 		$finder = new Finder();
 		$finder->files()->in( self::ELEMENTS_PATH );
@@ -41,8 +44,9 @@ class VCElementManager {
 		foreach ( $finder as $file ) {
 			$file_name = $file->getRelativePathname();
 			$class_name = 'MedFreeman\WP\VisualComposerAddons\Elements\\' . pathinfo( $file_name, PATHINFO_FILENAME );
-			$this->elements_instances[] = new $class_name();
+			$this->elements_classes[] = $class_name;
 		}
+		$this->elements_classes = apply_filters( 'vcaddons_elements_classes', $this->elements_classes );
 	}
 
 	/**
@@ -50,9 +54,25 @@ class VCElementManager {
 	 *
 	 * @return void
 	 */
-	function init() {
-		foreach ( $this->elements_instances as $instance ) {
-			$instance->init();
+	public function init() {
+		$this->vc_integration();
+	}
+
+	/**
+	 * Integrates each element with visual composer.
+	 *
+	 * @return void
+	 */
+	private function vc_integration() {
+		foreach ( $this->elements_classes as $class_name ) {
+			vc_map(
+				array_merge(
+					$class_name::vc_settings(),
+					array(
+						'php_class_name' => $class_name,
+					)
+				)
+			);
 		}
 	}
 }

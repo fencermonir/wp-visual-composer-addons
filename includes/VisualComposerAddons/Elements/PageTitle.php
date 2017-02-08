@@ -9,34 +9,41 @@
 
 namespace MedFreeman\WP\VisualComposerAddons\Elements;
 
-use MedFreeman\WP\VisualComposerAddons\AbstractVCElement;
+use MedFreeman\WP\VisualComposerAddons\VCElement;
 
 /**
  * Visual composer page title element class.
  */
-class PageTitle extends AbstractVCElement {
+class PageTitle extends \WPBakeryShortCodeFishBones {
+
+	use VCElement;
 
 	/**
-	 * Set element base name.
+	 * Element constructor.
 	 *
-	 * @return string
+	 * @param array $settings Visual composer vc_map settings.
+	 *
+	 * @return void
 	 */
-	function get_base() {
-		return 'page_title';
+	public function __construct( $settings ) {
+		parent::__construct( $settings ); // Important to call parent constructor to active all logic for shortcode.
 	}
 
 	/**
 	 * Register visual composer element.
 	 *
-	 * @return void
+	 * @return array $settings Visual composer vc_map settings.
 	 */
-	function vc_integration() {
+	public static function vc_settings() {
 		/* Intro */
-		vc_map( array(
+		return array(
 			'name'        => __( 'Page title', 'vcaddons' ),
-			'base'        => $this->get_base(),
-			'description' => __( 'Automatically placed page title', 'vcaddons' ),
-			'category'    => '1plusX',
+			'base'        => 'page_title',
+			'description' => __( 'Page title', 'vcaddons' ),
+			'category'    => 'Addons',
+			'admin_enqueue_js'  => VCADDONS_URL . 'assets/js/src/Elements/PageTitle.js',
+			'icon'              => 'icon-wpb__page_title',
+			'js_view'           => 'VcPageTitleView',
 			'params'      => array(
 				array(
 					'type' => 'textfield',
@@ -57,35 +64,25 @@ class PageTitle extends AbstractVCElement {
 					'description' => '',
 				),
 			),
-		) );
+		);
 	}
 
 	/**
 	 * Register visual composer element shortcode.
 	 *
-	 * @param array           $attrs shortcode attributes.
+	 * @param array           $atts shortcode attributes.
 	 * @param (string | null) $content shortcode contents.
 	 *
 	 * @return shortcode output
 	 */
-	function shortcode( $attrs, $content = null ) {
-		$this->counter += 1;
-		$attrs = shortcode_atts( array(
+	function content( $atts, $content = null ) {
+		$atts = shortcode_atts( array(
 			'title'       => '',
 			'title_color' => '#006699',
-		), $attrs );
-		$content = wpb_js_remove_wpautop( $content, true ); // fix unclosed/unwanted paragraph tags in $content.
-		$color = '' !== $attrs['title_color'] ? " style=\"color: {$attrs['title_color']}\"" : '';
+		), $atts );
+		$color = '' !== $atts['title_color'] ? " style=\"color: {$atts['title_color']}\"" : '';
 
-		$output = "<h2 class=\"wpb__page__title\"{$color}>{$attrs['title']}</h2>";
+		$output = "<h2 class=\"wpb__page__title\"{$color}>{$atts['title']}</h2>";
 		return $output;
-	}
-
-	/**
-	 * Register visual composer element style.
-	 *
-	 * @return void
-	 */
-	function enqueue_scripts() {
 	}
 }
