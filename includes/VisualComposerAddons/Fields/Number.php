@@ -9,12 +9,12 @@
 
 namespace MedFreeman\WP\VisualComposerAddons\Fields;
 
-use MedFreeman\WP\VisualComposerAddons\AbstractVCField;
+use MedFreeman\WP\VisualComposerAddons\VCFieldAbstract;
 
 /**
  * Visual composer Number field class.
  */
-class Number extends AbstractVCField {
+class Number extends VCFieldAbstract {
 
 	/**
 	 * Register visual composer field.

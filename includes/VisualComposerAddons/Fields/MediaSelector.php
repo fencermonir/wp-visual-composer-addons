@@ -9,12 +9,12 @@
 
 namespace MedFreeman\WP\VisualComposerAddons\Fields;
 
-use MedFreeman\WP\VisualComposerAddons\AbstractVCField;
+use MedFreeman\WP\VisualComposerAddons\VCFieldAbstract;
 
 /**
  * Visual composer Media selector field class.
  */
-class MediaSelector extends AbstractVCField {
+class MediaSelector extends VCFieldAbstract {
 
 	/**
 	 * Register visual composer field.

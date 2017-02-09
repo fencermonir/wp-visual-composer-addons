@@ -16,7 +16,7 @@ use MedFreeman\WP\Dev\Hooks;
  *
  * @package    visual-composer-addons
  */
-abstract class AbstractVCField {
+abstract class VCFieldAbstract {
 
 	use Hooks;
 
