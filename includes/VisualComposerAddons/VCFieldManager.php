@@ -9,8 +9,6 @@
 
 namespace MedFreeman\WP\VisualComposerAddons;
 
-use MedFreeman\WP\VisualComposerAddons\Fields;
-
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -20,20 +18,12 @@ class VCFieldManager {
 	const FIELDS_PATH = __DIR__ . '/Fields/';
 
 	/**
-	 * Store visual composer fields instances.
-	 *
-	 * @access private
-	 * @var array \MedFreeman\WP\VisualComposerAddons\AbstractVCField
-	 */
-	private $fields_instances;
-
-	/**
 	 * Register visual composer fields instances.
 	 *
 	 * @return void
 	 */
-	function __construct() {
-		$this->fields_instances = array();
+	public function __construct() {
+		$field_classes = array();
 
 		$finder = new Finder();
 		$finder->files()->in( self::FIELDS_PATH );
@@ -41,7 +31,13 @@ class VCFieldManager {
 		foreach ( $finder as $file ) {
 			$file_name = $file->getRelativePathname();
 			$class_name = 'MedFreeman\WP\VisualComposerAddons\Fields\\' . pathinfo( $file_name, PATHINFO_FILENAME );
-			$this->fields_instances[] = new $class_name();
+			$field_classes[] = $class_name;
+		}
+
+		$field_classes = apply_filters( 'vcaddons_fields_classes', $field_classes );
+
+		foreach ( $field_classes as $class_name ) {
+			new $class_name();
 		}
 	}
 }
