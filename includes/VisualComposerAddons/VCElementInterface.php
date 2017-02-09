@@ -9,7 +9,7 @@
 
 namespace MedFreeman\WP\VisualComposerAddons;
 
-Interface VCElementInterface {
+interface VCElementInterface {
 	/**
 	 * Register visual composer element.
 	 *
