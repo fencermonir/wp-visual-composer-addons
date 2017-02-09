@@ -9,14 +9,12 @@
 
 namespace MedFreeman\WP\VisualComposerAddons\Elements;
 
-use MedFreeman\WP\VisualComposerAddons\VCElement;
+use MedFreeman\WP\VisualComposerAddons\VCElementInterface;
 
 /**
  * Visual composer landing page text element class.
  */
-class CustomizableText extends \WPBakeryShortCodeFishBones {
-
-	use VCElement;
+class CustomizableText extends \WPBakeryShortCodeFishBones implements VCElementInterface {
 
 	/**
 	 * Register visual composer element.
@@ -88,7 +86,7 @@ class CustomizableText extends \WPBakeryShortCodeFishBones {
 	 *
 	 * @return shortcode output
 	 */
-	function content( $atts, $content = null ) {
+	public function content( $atts, $content = null ) {
 		$atts = shortcode_atts( array(
 			'size' => '16',
 			'weight' => 'normal',

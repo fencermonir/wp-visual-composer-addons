@@ -21,7 +21,7 @@ class MediaSelector extends AbstractVCField {
 	 *
 	 * @return void
 	 */
-	function vc_integration() {
+	protected function vc_integration() {
 		vc_add_shortcode_param( 'media' , array( $this, 'media_field_output' ), VCADDONS_URL . '/assets/js/src/Fields/admin-media-selector2.js' );
 	}
 

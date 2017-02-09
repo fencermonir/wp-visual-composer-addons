@@ -21,7 +21,7 @@ class Number extends AbstractVCField {
 	 *
 	 * @return void
 	 */
-	function vc_integration() {
+	protected function vc_integration() {
 		vc_add_shortcode_param( 'number' , array( $this, 'number_field_output' ) );
 	}
 

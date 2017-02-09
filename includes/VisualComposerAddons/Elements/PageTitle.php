@@ -9,14 +9,12 @@
 
 namespace MedFreeman\WP\VisualComposerAddons\Elements;
 
-use MedFreeman\WP\VisualComposerAddons\VCElement;
+use MedFreeman\WP\VisualComposerAddons\VCElementInterface;
 
 /**
  * Visual composer page title element class.
  */
-class PageTitle extends \WPBakeryShortCodeFishBones {
-
-	use VCElement;
+class PageTitle extends \WPBakeryShortCodeFishBones implements VCElementInterface {
 
 	/**
 	 * Register visual composer element.
