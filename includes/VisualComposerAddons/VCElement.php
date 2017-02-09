@@ -15,9 +15,9 @@ trait VCElement {
 	 *
 	 * @uses   add_action
 	 * @action vc_before_init
-	 * @return void
+	 * @return array $settings Visual composer vc_map settings.
 	 */
-	protected static function vc_settings() {
-
+	public static function vc_settings() {
+		return array();
 	}
 }
