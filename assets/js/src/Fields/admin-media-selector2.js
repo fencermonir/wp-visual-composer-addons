@@ -104,11 +104,11 @@ function renderMediaUploader( $, $button, ids, mime_type ) {
 			var $this = $(this);
 
 			// Get the mime type from the data attribute as an array
-			var mime_type = $(this).data('mime-type').split(',');
+			var mime_type = $this.data('mime-type').split(',');
 
 			// Get the id of the attachment from the field
-			var id_param_name = $(this).nextAll('.wpb-media-id-field').attr('name');
-			var ids = $(this).nextAll('input[name=' + id_param_name + ']').val().split(',');
+			var id_param_name = $this.nextAll('.wpb-media-id-field').attr('name');
+			var ids = $this.nextAll('input[name=' + id_param_name + ']').val().split(',');
 
 			// Display the media uploader
 			renderMediaUploader( $, $this, ids, mime_type );
