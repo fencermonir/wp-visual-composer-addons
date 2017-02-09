@@ -3,7 +3,7 @@
  * Plugin Name: Visual Composer addons
  * Plugin URI:  https://github.com/medfreeman/wp-visual-composer-addons
  * Description: A collection of addons for visual composer https://vc.wpbakery.com/
- * Version:     1.3.0
+ * Version:     2.0.0
  * Author:      Mehdi Lahlou
  * Author URI:  https://github.com/medfreeman
  * Text Domain: vcaddons
@@ -42,7 +42,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 }
 
 // Useful global constants
-define( 'VCADDONS_VERSION', '0.1.0' );
+define( 'VCADDONS_VERSION', '2.0.0' );
 define( 'VCADDONS_URL',     plugin_dir_url( __FILE__ ) );
 define( 'VCADDONS_PATH',    dirname( __FILE__ ) . '/' );
 define( 'VCADDONS_INC',     VCADDONS_PATH . 'includes/' );
