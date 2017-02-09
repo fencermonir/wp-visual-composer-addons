@@ -41,7 +41,6 @@ class Plugin {
 	public function __construct() {
 		add_action( 'init', array( $this, 'i18n' ) );
 		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'vc_before_init', array( $this, 'vc_init' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'styles' ) );
 
@@ -65,16 +64,6 @@ class Plugin {
 		}
 
 		do_action( 'vcaddons_init' );
-	}
-
-	/**
-	 * Initializes vc_element_manager.
-	 *
-	 * @author Mehdi Lahlou
-	 * @return void
-	 */
-	public function vc_init() {
-		$this->vc_element_manager->init();
 	}
 
 	/**

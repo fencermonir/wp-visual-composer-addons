@@ -35,7 +35,7 @@ class VCElementManager {
 	 *
 	 * @return void
 	 */
-	function __construct() {
+	public function __construct() {
 		$this->elements_classes = array();
 
 		$finder = new Finder();
@@ -47,15 +47,8 @@ class VCElementManager {
 			$this->elements_classes[] = $class_name;
 		}
 		$this->elements_classes = apply_filters( 'vcaddons_elements_classes', $this->elements_classes );
-	}
 
-	/**
-	 * Initializes visual composer elements instances.
-	 *
-	 * @return void
-	 */
-	public function init() {
-		$this->vc_integration();
+		$this->add_action( 'vc_before_init', 'vc_integration' );
 	}
 
 	/**
