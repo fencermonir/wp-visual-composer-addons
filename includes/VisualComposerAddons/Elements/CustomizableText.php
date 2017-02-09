@@ -19,17 +19,6 @@ class CustomizableText extends \WPBakeryShortCodeFishBones {
 	use VCElement;
 
 	/**
-	 * Element constructor.
-	 *
-	 * @param array $settings Visual composer vc_map settings.
-	 *
-	 * @return void
-	 */
-	public function __construct( $settings ) {
-		parent::__construct( $settings ); // Important to call parent constructor to active all logic for shortcode.
-	}
-
-	/**
 	 * Register visual composer element.
 	 *
 	 * @return array $settings Visual composer vc_map settings.
