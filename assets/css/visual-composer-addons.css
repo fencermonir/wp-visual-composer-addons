@@ -1,3 +1,8 @@
+ .wp-admin .wpb__customizable__text * {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+ }
+
 .vc_element-icon.icon-wpb__customizable_text {
 	background-image: url(../images/src/Elements/CustomizableText.png);
 }
